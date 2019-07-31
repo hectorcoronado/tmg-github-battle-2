@@ -10,7 +10,9 @@ export default class Popular extends React.Component {
 
         this.state = {
             error: null,
-            repos: null,
+            repos: {
+
+            },
             selectedLanguage: 'All'
         }
 
@@ -19,33 +21,46 @@ export default class Popular extends React.Component {
     }
 
     componentDidMount() {
+        // when the component first mounts, fetch repos w/default option 'all'
         this.updateLanguage(this.state.selectedLanguage)
     }
 
     updateLanguage (selectedLanguage) {
         this.setState({
             error: null,
-            repos: null,
             selectedLanguage
         })
 
-        fetchPopularRepos(selectedLanguage)
-            .then(repos => this.setState({
-                error: null,
-                repos
-            }))
-            // we `catch` the error from fetchPopularRepos here to update our user
-            .catch(() => {
-                console.warn('error fetching repos: ', error)
-
-                this.setState({
-                    error: `there was an error fetching the repos`
+        // if we have not yet fetched repos for a specific language, make request
+        if (!this.state.repos[selectedLanguage]) {
+            fetchPopularRepos(selectedLanguage)
+                .then(data => {
+                    this.setState(({ repos }) => ({
+                        repos: {
+                            ...repos,
+                            [selectedLanguage]: data
+                        }
+                    }))
                 })
-            })
+                // we `catch` the error from fetchPopularRepos here to update our user
+                .catch(() => {
+                    console.warn('error fetching repos: ', error)
+    
+                    this.setState({
+                        error: `there was an error fetching the repos`
+                    })
+                })
+        }
+
     }
 
     isLoading () {
-        return this.state.repos === null & this.state.error === null
+        const { error, repos, selectedLanguage } = this.state
+
+        // our app is loading if:
+        // 1. we have no repos for specific language, and
+        // 2. we do not have any error message
+        return !repos[selectedLanguage] && error === null
     }
 
     render () {
@@ -62,7 +77,7 @@ export default class Popular extends React.Component {
 
                 {error && <p>{error}</p>}
 
-                {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
+                {repos[selectedLanguage] && <pre>{JSON.stringify(repos[selectedLanguage], null, 2)}</pre>}
             </>
         )
     }
