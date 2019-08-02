@@ -49,4 +49,76 @@ li {
     font-size: 1.8rem;
     font-weight: bold;
     text-decoration: none;
-} 
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.header-lg {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin: 2rem;    
+}
+
+.avatar {
+    border-radius: .3rem;
+    display: block;
+    height: 15rem;
+    margin: 0 auto;
+    width: 15rem;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.link {
+    color: rgb(187, 46, 31);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.card-list {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+.card-list li {
+    align-items: center;
+    display: flex;
+    margin: 1rem;
+}
+
+.card-list svg {
+    margin-right: 1rem;
+}
+
+.card-list a {
+    color: inherit;
+    font-weight: 500;
+}
+
+.bg-light {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: .3rem;
+}
+
+.repo {
+    margin: 1rem 0;
+    padding: 2rem;
+    width: 25rem;
+}
+
+.repo a {
+    text-decoration: none;
+}
+
+.repo img {
+    margin-bottom: .8rem;
+}
