@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaFighterJet, FaTrophy, FaUserFriends } from 'react-icons/fa'
 
-const Instructions = () => {
+export const Instructions = () => {
     return (
         <div className='instructions-container'>
             <h2 className='center-text header-lg'>Instructions</h2>
@@ -22,5 +22,3 @@ const Instructions = () => {
         </div>
     )
 }
-
-export default Instructions

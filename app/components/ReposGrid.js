@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FaCodeBranch, FaExclamationTriangle, FaStar, FaUser } from 'react-icons/fa'
 
-const ReposGrid = ({ repos }) => {
+export const ReposGrid = ({ repos }) => {
     return (
         <ul className='grid space-around'>
             {repos.map((repo, index) => {
@@ -55,5 +55,3 @@ const ReposGrid = ({ repos }) => {
 ReposGrid.propTypes = {
     repos: PropTypes.array.isRequired
 }
-
-export default ReposGrid
