@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { battle } from '../utils/api'
 import { Card } from './Card'
+import Loading from './Loading'
 import { ProfileList } from './ProfileList'
 
 export default class Results extends React.Component {
@@ -40,7 +41,7 @@ export default class Results extends React.Component {
         const { error, loading, loser, winner } = this.state
 
         if (loading) {
-            return <p>...loading...</p>
+            return <Loading />
         }
 
         if (error) {
