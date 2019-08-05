@@ -115,17 +115,17 @@ li {
     border-radius: .3rem;
 }
 
-.repo {
+.card {
     margin: 1rem 0;
     padding: 2rem;
     width: 25rem;
 }
 
-.repo a {
+.card a {
     text-decoration: none;
 }
 
-.repo img {
+.card img {
     margin-bottom: .8rem;
 }
 
@@ -238,3 +238,13 @@ li {
 .player-info link {
     margin-left: 1rem;
 }
+
+.btn-space {
+    margin: 4rem auto;
+}
+
+.error {
+    color: #ff1616;
+    font-size: 2rem;
+    margin: 5rem 0;
+} 

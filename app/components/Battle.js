@@ -3,12 +3,15 @@ import React from 'react'
 import { Instructions } from './Instructions'
 import PlayerInput from './PlayerInput'
 import { PlayerPreview } from './PlayerPreview';
+import Results from './Results'
+import { FaLess } from 'react-icons/fa';
 
 export default class Battle extends React.Component {
     constructor (props) {
         super(props)
 
         this.state = {
+            battle: false,
             playerOne: null,
             playerTwo: null
         }
@@ -30,7 +33,11 @@ export default class Battle extends React.Component {
     }
 
     render () {
-        const { playerOne, playerTwo } = this.state
+        const { battle, playerOne, playerTwo } = this.state
+
+        if (battle) {
+            return <Results playerOne={playerOne} playerTwo={playerTwo} />
+        }
 
         return (
             <React.Fragment>
@@ -69,6 +76,16 @@ export default class Battle extends React.Component {
                             )
                         }
                     </div>
+
+                    {playerOne && playerTwo && (
+                        <button
+                            className='btn dark-btn btn-space'
+                            onClick={() => this.setState({ battle: true })}
+                        >
+                            Battle
+                        </button>
+                    )}
+
                 </div>
             </React.Fragment>
         )
