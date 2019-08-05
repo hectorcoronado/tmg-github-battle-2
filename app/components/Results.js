@@ -1,15 +1,8 @@
 import React from 'react'
-import {
-    FaBriefcase,
-    FaCode,
-    FaCompass,
-    FaUser,
-    FaUserFriends,
-    FaUsers
-} from 'react-icons/fa'
 
 import { battle } from '../utils/api'
 import { Card } from './Card'
+import { ProfileList } from './ProfileList'
 
 export default class Results extends React.Component {
     constructor (props) {
@@ -64,32 +57,7 @@ export default class Results extends React.Component {
                     name={winner.profile.login}
                     subheader={`Score: ${winner.score.toLocaleString()}`}
                 >
-                    <ul className='card-list'>
-                        <li>
-                            <FaUser color='rgb(239, 115, 115)' size={22} />
-                            {winner.profile.name}
-                        </li>
-                        {winner.profile.location && (
-                            <li>
-                                <FaCompass color='rgb(144, 115, 255)' size={22} />
-                                {winner.profile.location}
-                            </li>
-                        )}
-                        {winner.profile.company && (
-                            <li>
-                                <FaBriefcase color='#795548' size={22} />
-                                {winner.profile.company}
-                            </li>
-                        )}
-                        <li>
-                            <FaUsers color='rgb(129, 195, 245)' size={22} />
-                            {winner.profile.followers.toLocaleString()} followers
-                        </li>
-                        <li>
-                            <FaUserFriends color='rgb(195, 183, 95)' size={22} />
-                            {winner.profile.following.toLocaleString()} following
-                        </li>
-                    </ul>
+                    <ProfileList profile={winner.profile} />
                 </Card>
                 <Card
                     avatar={loser.profile.avatar_url}
@@ -98,32 +66,7 @@ export default class Results extends React.Component {
                     name={loser.profile.login}
                     subheader={`Score: ${loser.score.toLocaleString()}`}
                 >
-                    <ul className='card-list'>
-                        <li>
-                            <FaUser color='rgb(239, 115, 115)' size={22} />
-                            {loser.profile.name}
-                        </li>
-                        {loser.profile.location && (
-                            <li>
-                                <FaCompass color='rgb(144, 115, 255)' size={22} />
-                                {loser.profile.location}
-                            </li>
-                        )}
-                        {loser.profile.company && (
-                            <li>
-                                <FaBriefcase color='#795548' size={22} />
-                                {loser.profile.company}
-                            </li>
-                        )}
-                        <li>
-                            <FaUsers color='rgb(129, 195, 245)' size={22} />
-                            {loser.profile.followers.toLocaleString()} followers
-                        </li>
-                        <li>
-                            <FaUserFriends color='rgb(195, 183, 95)' size={22} />
-                            {loser.profile.following.toLocaleString()} following
-                        </li>
-                    </ul>
+                    <ProfileList profile={loser.profile} />
                 </Card>
             </div>
         )
