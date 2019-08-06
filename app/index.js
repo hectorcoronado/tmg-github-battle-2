@@ -5,6 +5,7 @@ import './index.css'
 
 import Battle from './components/Battle'
 import Popular from './components/Popular'
+// import Sandbox from './components/Sandbox'
 
 class App extends React.Component {
     render () {
