@@ -9,7 +9,7 @@ import {
     FaUsers
 } from 'react-icons/fa'
 
-import Tooltip from './Tooltip'
+import { Tooltip } from './Tooltip'
 
 export const ProfileList = ({ profile }) => {
     return (
