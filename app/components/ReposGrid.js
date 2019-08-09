@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { FaCodeBranch, FaExclamationTriangle, FaStar, FaUser } from 'react-icons/fa'
 
 import { Card } from './Card'
-import Tooltip from './Tooltip'
+import { Tooltip } from './Tooltip'
 
 export const ReposGrid = ({ repos }) => {
     return (

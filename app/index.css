@@ -247,4 +247,10 @@ li {
     color: #ff1616;
     font-size: 2rem;
     margin: 5rem 0;
-} 
+}
+
+.dark {
+    background: #1c2022;
+    color: #dadada;
+    min-height: 100%;
+}
