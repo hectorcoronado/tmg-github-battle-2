@@ -115,6 +115,11 @@ li {
     border-radius: .3rem;
 }
 
+.bg-dark {
+    background: rgb(36, 40, 42);
+    border-radius: .3rem;
+}
+
 .card {
     margin: 1rem 0;
     padding: 2rem;
@@ -188,6 +193,11 @@ li {
     background: rgba(0, 0, 0, 0.02);
 }
 
+.player-inputs .input-dark {
+    color: #dadada;
+    background: rgba(0, 0, 0, 0.3);
+}
+
 .player-inputs button {
     flex: 1;
     margin-left: 1rem;
@@ -215,6 +225,16 @@ li {
 .dark-btn:disabled {
     background: #f2f2f2;
     color: #c7c7c7;
+}
+
+.light-btn {
+    color: #000;
+    background: #aaa8a8;
+}
+
+.light-btn:disabled {
+    color: #292929;
+    background: #4a4a4a;
 }
 
 .players-container {
@@ -253,4 +273,12 @@ li {
     background: #1c2022;
     color: #dadada;
     min-height: 100%;
+}
+
+.emoji-light {
+    color: black;
+}
+
+.emoji-dark {
+    color: white;
 }

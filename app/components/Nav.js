@@ -8,11 +8,11 @@ export const Nav = () => {
             {({ theme, toggleTheme }) => (
                 <nav className='row space-between'>
                     <button
-                        className='btn-clear'
+                        className={`btn-clear emoji-${theme}`}
                         onClick={toggleTheme}
                         style={{fontSize: '3rem'}}
                     >
-                        {theme === 'light' ? 'dark' : 'light'}
+                        {theme === 'light' ? '🌙' : '💡'}
                     </button>
                 </nav>
             )}

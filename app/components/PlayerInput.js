@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { ThemeConsumer } from '../contexts/theme'
+
 export default class PlayerInput extends React.Component {
     constructor(props) {
         super(props)
@@ -27,29 +29,33 @@ export default class PlayerInput extends React.Component {
 
     render () {
         return (
-            <form className='column player' onSubmit={this.handleSubmit}>
-                <label className='player-label' htmlFor='username'>
-                    {this.props.label}
-                </label>
-                <div className='row player-inputs'>
-                    <input
-                        autoComplete='off'
-                        className='input-light'
-                        id='username'
-                        onChange={this.handleChange}
-                        placeholder='github username'
-                        type='text'
-                        value={this.state.username}
-                    />
-                    <button
-                        className='btn dark-btn'
-                        disabled={!this.state.username}
-                        type='submit'
-                    >
-                        Submit
-                    </button>
-                </div>
-            </form>
+            <ThemeConsumer>
+                {({ theme }) => (
+                    <form className='column player' onSubmit={this.handleSubmit}>
+                        <label className='player-label' htmlFor='username'>
+                            {this.props.label}
+                        </label>
+                        <div className='row player-inputs'>
+                            <input
+                                autoComplete='off'
+                                className={`input-${theme}`}
+                                id='username'
+                                onChange={this.handleChange}
+                                placeholder='github username'
+                                type='text'
+                                value={this.state.username}
+                            />
+                            <button
+                                className={`btn ${theme === 'dark' ? 'light-btn' : 'dark-btn'}`}
+                                disabled={!this.state.username}
+                                type='submit'
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                )}
+            </ThemeConsumer>
         )
     }
 }
