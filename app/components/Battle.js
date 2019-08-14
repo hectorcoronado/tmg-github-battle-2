@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Instructions } from './Instructions'
 import PlayerInput from './PlayerInput'
@@ -11,7 +12,6 @@ export default class Battle extends React.Component {
         super(props)
 
         this.state = {
-            battle: false,
             playerOne: null,
             playerTwo: null
         }
@@ -33,21 +33,7 @@ export default class Battle extends React.Component {
     }
 
     render () {
-        const { battle, playerOne, playerTwo } = this.state
-
-        if (battle) {
-            return (
-                <Results
-                    onReset={() => this.setState({
-                        battle: false,
-                        playerOne: null,
-                        playerTwo: null
-                    })}
-                    playerOne={playerOne}
-                    playerTwo={playerTwo}
-                />
-            )
-        }
+        const { playerOne, playerTwo } = this.state
 
         return (
             <React.Fragment>
@@ -88,12 +74,15 @@ export default class Battle extends React.Component {
                     </div>
 
                     {playerOne && playerTwo && (
-                        <button
+                        <Link
                             className='btn dark-btn btn-space'
-                            onClick={() => this.setState({ battle: true })}
+                            to={{
+                                pathname: '/battle/results',
+                                search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
+                            }}
                         >
                             Battle
-                        </button>
+                        </Link>
                     )}
 
                 </div>
