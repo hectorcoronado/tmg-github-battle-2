@@ -1,5 +1,4 @@
 # tmg-github-battle-2
-===
 
 ## component lifecycle
 
