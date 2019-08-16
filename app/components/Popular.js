@@ -7,19 +7,10 @@ import { ReposGrid } from './ReposGrid'
 import { fetchPopularRepos } from '../utils/api'
 
 export default class Popular extends React.Component {
-    constructor (props) {
-        super(props)
-
-        this.state = {
-            error: null,
-            repos: {
-
-            },
-            selectedLanguage: 'All'
-        }
-
-        this.updateLanguage = this.updateLanguage.bind(this)
-        this.isLoading = this.isLoading.bind(this)
+    state = {
+        error: null,
+        repos: {},
+        selectedLanguage: 'All'
     }
 
     componentDidMount() {
@@ -27,7 +18,7 @@ export default class Popular extends React.Component {
         this.updateLanguage(this.state.selectedLanguage)
     }
 
-    updateLanguage (selectedLanguage) {
+    updateLanguage = selectedLanguage => {
         this.setState({
             error: null,
             selectedLanguage
@@ -56,7 +47,7 @@ export default class Popular extends React.Component {
 
     }
 
-    isLoading () {
+    isLoading = () => {
         const { error, repos, selectedLanguage } = this.state
 
         // our app is loading if:
@@ -69,7 +60,7 @@ export default class Popular extends React.Component {
         const { error, repos, selectedLanguage } = this.state
 
         return (
-            <>
+            <React.Fragment>
                 <LanguagesNav
                     onUpdateLanguage={this.updateLanguage}
                     selected={selectedLanguage}
@@ -80,7 +71,7 @@ export default class Popular extends React.Component {
                 {error && <p className='center-text error'>{error}</p>}
 
                 {repos[selectedLanguage] && <ReposGrid repos={repos[selectedLanguage]}/> }
-            </>
+            </React.Fragment>
         )
     }
 }

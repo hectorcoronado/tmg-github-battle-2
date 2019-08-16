@@ -4,27 +4,21 @@ import PropTypes from 'prop-types'
 import { ThemeConsumer } from '../contexts/theme'
 
 export default class PlayerInput extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            username: ''
-        }
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    state = {
+        username: ''
     }
 
-    handleChange (e) {
-        this.setState({
-            username: e.target.value
-        })
-    }
+    handleChange = e => this.setState({ username: e.target.value })
 
-    handleSubmit (e) {
+    handleSubmit = e => {
         e.preventDefault()
 
         this.props.onSubmit(this.state.username)
+    }
+
+    static propTypes = {
+        label: PropTypes.string.isRequired,
+        onSubmit: PropTypes.func.isRequired
     }
 
     render () {
@@ -58,9 +52,4 @@ export default class PlayerInput extends React.Component {
             </ThemeConsumer>
         )
     }
-}
-
-PlayerInput.propTypes = {
-    label: PropTypes.string.isRequired,
-    onSubmit: PropTypes.func.isRequired
 }

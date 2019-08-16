@@ -8,15 +8,11 @@ import Loading from './Loading'
 import { ProfileList } from './ProfileList'
 
 export default class Results extends React.Component {
-    constructor (props) {
-        super(props)
-
-        this.state = {
-            error: null,
-            loading: true,
-            loser: null,
-            winner: null
-        }
+    state = {
+        error: null,
+        loading: true,
+        loser: null,
+        winner: null
     }
 
     componentDidMount () {

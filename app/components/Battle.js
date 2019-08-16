@@ -4,33 +4,16 @@ import { Link } from 'react-router-dom'
 import { Instructions } from './Instructions'
 import PlayerInput from './PlayerInput'
 import { PlayerPreview } from './PlayerPreview';
-import Results from './Results'
-import { FaLess } from 'react-icons/fa';
 
 export default class Battle extends React.Component {
-    constructor (props) {
-        super(props)
-
-        this.state = {
-            playerOne: null,
-            playerTwo: null
-        }
-
-        this.handleReset = this.handleReset.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    state = {
+        playerOne: null,
+        playerTwo: null
     }
 
-    handleReset (id) {
-        this.setState({
-            [id]: null
-        })
-    }
+    handleReset = id => this.setState({ [id]: null })
 
-    handleSubmit (id, player) {
-        this.setState({
-            [id]: player
-        })
-    }
+    handleSubmit = (id, player) => this.setState({ [id]: player })
 
     render () {
         const { playerOne, playerTwo } = this.state
