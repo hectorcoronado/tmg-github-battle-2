@@ -1,4 +1,5 @@
 const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -21,8 +22,18 @@ module.exports = {
         // tell webpack to not handle any server request, just render index route:
         publicPath: '/'
     },
-    mode: 'development',
+    mode: process.env.NODE_ENV === 'production'
+        ? 'production'
+        : 'development',
     plugins: [
+        /**
+         * netlify needs to 'know' what to do with redirects;
+         * this is similar to the `historyApiFallback` setting for
+         * development mode
+         */
+        new CopyPlugin([
+            { from: '_redirects' }
+        ]),
         new HtmlWebpackPlugin({
             template: 'app/index.html'
         })
